@@ -1,0 +1,10 @@
+{
+	acme_ca https://acme-v02.api.letsencrypt.org/directory
+}
+
+# Set CASINO_DOMAIN to casino.<PUBLIC_IPV4>.nip.io before starting Caddy.
+# Caddy obtains and renews the public certificate automatically.
+{$CASINO_DOMAIN} {
+	encode zstd gzip
+	reverse_proxy 127.0.0.1:3000
+}
